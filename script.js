@@ -6,7 +6,7 @@ document.getElementById('pensionForm').addEventListener('submit', function (even
   var B = parseFloat(document.getElementById('B').value);
   var n = parseFloat(document.getElementById('n').value);
   if (B >= 5900000) {
-    B = 590000
+    B = 5900000
   } else if (B <= 370000) {
     B = 370000
   }
