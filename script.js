@@ -5,6 +5,11 @@ document.getElementById('pensionForm').addEventListener('submit', function (even
   var X = 1.275;
   var B = parseFloat(document.getElementById('B').value);
   var n = parseFloat(document.getElementById('n').value);
+  if (B >= 5900000) {
+    B = 590000
+  } else if (B <= 370000) {
+    B = 370000
+  }
 
   var pension = X * (A + B) * (1 + 0.05 * n / 12) / 12;
 
