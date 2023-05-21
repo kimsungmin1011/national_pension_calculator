@@ -1,9 +1,10 @@
 document.getElementById('pensionForm').addEventListener('submit', function (event) {
   event.preventDefault();
-
+  
+  var Y = parseFloat(document.getElementById('Y').value);
   var A = 2816091;
   var X = 1.275;
-  var B = parseFloat(document.getElementById('B').value);
+  var B = parseFloat(document.getElementById('B').value) * 10000;
   var n = parseFloat(document.getElementById('n').value);
 
   if (B >= 5900000) {
@@ -15,4 +16,5 @@ document.getElementById('pensionForm').addEventListener('submit', function (even
   var pension = X * (A + B) * (1 + 0.05 * n) / 12;
 
   document.getElementById('result').innerText = (pension.toFixed(0)).toLocaleString('ko-KR') + '원';
+  document.getElementById('age').innerText = Y + 60 + '년';
 });
