@@ -8,5 +8,5 @@ document.getElementById('pensionForm').addEventListener('submit', function (even
 
   var pension = X * (A + B) * (1 + 0.05 * n / 12) / 12;
 
-  document.getElementById('result').innerText = '예상 월 지급액: ' + (pension.toFixed(0)).toLocaleString('ko-KR') + '원';
+  document.getElementById('result').innerText = (pension.toFixed(0)).toLocaleString('ko-KR') + '원';
 });
