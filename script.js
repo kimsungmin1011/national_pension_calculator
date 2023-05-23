@@ -25,9 +25,23 @@ document.getElementById('pensionForm').addEventListener('submit', function (even
     alert("국민연금제도는 1988년부터 시행되었습니다");
   }
 
+  if (Y<=1952){
+    var SY = Y + 60;
+  }else if (Y>=1953 && Y<=1956){
+    SY = Y + 61;
+  }else if (Y>=1957 && Y<=1960){
+    SY = Y + 62;
+  }else if (Y>=1961 && Y<=1964){
+    SY = Y + 63;
+  }else if (Y>=1965 && Y<=1968){
+    SY = Y + 64;
+  }else if (Y>=1969){
+    SY = Y + 65;
+  }
+
   document.getElementById('cost').innerText = B * 0.09 + '원';
   document.getElementById('total').innerText = B * 0.09 * 12 * (20 + n) + '원';
   document.getElementById('result').innerText = (pension.toFixed(0)).toLocaleString('ko-KR') + '원';
-  document.getElementById('age').innerText = Y + 60 + '년';
+  document.getElementById('age').innerText = SY + '년';
   document.getElementById('sonik').innerText =  Math.floor((B * 0.09 * 12 * (20 + n)) / (pension * 12))+ Y + 60 + '년';
 });
