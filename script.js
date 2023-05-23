@@ -16,9 +16,9 @@ document.getElementById('pensionForm').addEventListener('submit', function (even
   }
 
   if (year>=1988 && year <= 1998){
-    var pension = 2.4 * (A + 0.75 * B) * (1 + 0.05 * n / 12) / 12;
+    var pension = 2.4 * (A + 0.75 * B) * (1 + 0.05 * n) / 12;
   } else if (year >= 1999 && year <=2007){
-    pension = 1.8 * (A + B) * (1 + 0.05 * n / 12) / 12;
+    pension = 1.8 * (A + B) * (1 + 0.05 * n) / 12;
   } else if (year >=2008) {
     pension = X * (A + B) * (1 + 0.05 * n) / 12;
   } else {
