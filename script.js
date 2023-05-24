@@ -15,9 +15,9 @@ document.getElementById('pensionForm').addEventListener('submit', function (even
   }
 
   if (year >= 1988 && year <= 1998) {
-    var pension = (2.4 * (A + 0.75 * B) * (1 + 0.05 * n) / 12)*((1998-year+1)/(n+20)) + (1.8 * (A + B) * (1 + 0.05 * n) / 12) * ((2007-1999+1)/(n+20)) + (X * (A + B) * (1 + 0.05 * n) / 12) * ((year+n+20-2008)/(n+20));
+    var pension = (2.4 * (A + 0.75 * B) * (1 + 0.05 * n) / 12)*((1998-year+1)/(n+20)) + (1.8 * (A + B) * (1 + 0.05 * n) / 12) * ((2007-1999+1)/(n+20)) + (X * (A + B) * (1 + 0.05 * n) / 12) * ((year+n+20-2008+1)/(n+20));
   } else if (year >= 1999 && year <= 2007) {
-    pension = (1.8 * (A + B) * (1 + 0.05 * n) / 12) * ((2007-year+1)/(n+20)) + (X * (A + B) * (1 + 0.05 * n) / 12) * ((year+n+20-2008)/(n+20));
+    pension = (1.8 * (A + B) * (1 + 0.05 * n) / 12) * ((2007-year+1)/(n+20)) + (X * (A + B) * (1 + 0.05 * n) / 12) * ((year+n+20-2008+1)/(n+20));
   } else if (year >= 2008) {
     pension = (X * (A + B) * (1 + 0.05 * n) / 12);
   } else {
@@ -38,9 +38,12 @@ document.getElementById('pensionForm').addEventListener('submit', function (even
     SY = Y + 65;
   }
 
-  document.getElementById('cost').innerText = B * 0.09 + '원';
-  document.getElementById('total').innerText = B * 0.09 * 12 * (20 + n) + '원';
-  document.getElementById('result').innerText = (pension.toFixed(0)).toLocaleString('ko-KR') + '원';
+  var month_tax = B * 0.09;
+  var total = month_tax * 12 * (20 + n);
+  var month_recipt = (pension.toFixed(0)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  document.getElementById('cost').innerText = (month_tax).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '원';
+  document.getElementById('total').innerText = (total).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '원';
   document.getElementById('age').innerText = SY + '년';
-  document.getElementById('sonik').innerText = Math.floor((B * 0.09 * 12 * (20 + n)) / (pension * 12)) + SY + '년';
+  document.getElementById('result').innerText = month_recipt + '원';
+  document.getElementById('sonik').innerText = Math.floor((total) / (pension * 12)) + SY + '년';
 });
