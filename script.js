@@ -8,8 +8,8 @@ document.getElementById('pensionForm').addEventListener('submit', function (even
   var n = parseFloat(document.getElementById('n').value);
   var year = parseInt(document.getElementById('year').value);
 
-  if (year<Y+20) {
-    alert("국민연금은 만 20세 이상부터 가입할 수 있습니다");
+  if (year<Y+18) {
+    alert("국민연금은 만 18세 이상부터 가입할 수 있습니다");
     return 0;
   }
 
