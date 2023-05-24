@@ -8,6 +8,11 @@ document.getElementById('pensionForm').addEventListener('submit', function (even
   var n = parseFloat(document.getElementById('n').value);
   var year = parseInt(document.getElementById('year').value);
 
+  if (year<Y+20) {
+    alert("국민연금은 만 20세 이상부터 가입할 수 있습니다");
+    return 0;
+  }
+
   if (B >= 5900000) {
     B = 5900000
   } else if (B <= 370000) {
@@ -22,6 +27,7 @@ document.getElementById('pensionForm').addEventListener('submit', function (even
     pension = (X * (A + B) * (1 + 0.05 * n) / 12);
   } else {
     alert("국민연금제도는 1988년부터 시행되었습니다");
+    return 0;
   }
 
   if (Y <= 1952) {
